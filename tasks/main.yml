@@ -5,7 +5,34 @@
 
 - name: Define nginx_user.
   set_fact:
-    nginx_user: "{{ __nginx_user }}"
+    nginx_user: "{{ nginx_user }}"
   when: nginx_user is not defined
 
 # Setup/install tasks.
+- name: Enable nginx repo.
+  template:
+    src: nginx.repo.j2
+    dest: /etc/yum.repos.d/nginx.repo
+    owner: root
+    group: root
+    mode: 00644
+
+- name: Ensure nginx is installed.
+  yum:
+    name: nginx
+    state: installed
+    enablerepo: nginx
+
+# Nginx setup.
+- name: Copy nginx configuration in place.
+  template:
+    src: nginx.conf.j2
+    dest: /etc/nginx/nginx.conf
+    owner: root
+    group: root
+    mode: 00644
+  notify:
+    - reload nginx
+
+- name: Ensure nginx is started and enabled to start at boot.
+  service: name=nginx state=started enabled=yes
