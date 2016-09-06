@@ -1,0 +1,11 @@
+---
+# Variable setup.
+- name: Include variables.
+  include_vars: default.yml
+
+- name: Define nginx user.
+  set_fact:
+    nginx_user: "{{ __nginx_user }}"
+  when: nginx user is not defined.
+
+# Setup/install tasks.

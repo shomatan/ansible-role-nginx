@@ -13,10 +13,10 @@ Vagrant.configure(2) do |config|
     machine.vm.hostname = "default"
     machine.vm.network :private_network, ip: "192.168.33.20"
     machine.vm.provision :ansible_local do |ansible|
-      ansible.playbook = 'provision.yml'
+      ansible.playbook = "tests/main.yml"
       ansible.inventory_path = 'inventory'
       ansible.limit = 'all'
-      ansible.verbose = true
+      ansible.verbose = 'vv'
       ansible.install = true
     end
   end
