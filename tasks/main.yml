@@ -49,5 +49,13 @@
     group: "{{ nginx_user }}"
     mode: 00755
 
+- name: Copy log lotate configuration in place.
+  template:
+    src: loglotate.j2
+    dest: /etc/logrotate.d/nginx
+    owner: root
+    group: root
+    mode: 00644
+
 - name: Ensure nginx is started and enabled to start at boot.
   service: name=nginx state=started enabled=yes
