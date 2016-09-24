@@ -20,7 +20,7 @@
 - name: Ensure nginx is installed.
   yum:
     name: nginx
-    state: installed
+    state: "{{ nginx_version }}"
     enablerepo: nginx
 
 # Nginx setup.
