@@ -9,13 +9,12 @@
   when: nginx_user is not defined
 
 # Setup/install tasks.
-- name: Enable nginx repo.
-  template:
-    src: nginx.repo.j2
-    dest: /etc/yum.repos.d/nginx.repo
-    owner: root
-    group: root
-    mode: 00644
+- name: Add nginx repository
+  yum_repository:
+    name: nginx
+    description: nginx repo
+    baseurl: http://nginx.org/packages/mainline/centos/{{ ansible_distribution_major_version }}/$basearch/
+    enabled: no
 
 - name: Ensure nginx is installed.
   yum:
