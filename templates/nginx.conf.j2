@@ -35,6 +35,7 @@ http {
     server_tokens         {{ nginx_server_tokens }};
     port_in_redirect      {{ nginx_port_in_redirect }};
 
+    server_names_hash_bucket_size {{ nginx_server_names_hash_bucket_size }};
     #gzip  on;
 
     include /etc/nginx/conf.d/*.conf;
