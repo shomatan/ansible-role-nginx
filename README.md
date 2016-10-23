@@ -5,4 +5,18 @@ Installs and configures [Nginx](http://nginx.org/) Open Source HTTP and reverse 
 None.
 
 ## Role Variables
-The variables that can be passed to this role and a brief description about them are as follows. (For all variables, take a look at [defaults/main.yml](defaults/main.yml))
+|Key|Type|Description|Default|
+|:--|:---|:----------|:------|
+
+## Dependencies
+None.
+
+## Example playbook
+
+```yaml
+- hosts: all
+  roles:
+    - { role: nginx }
+  vars:
+
+```
