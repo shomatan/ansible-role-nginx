@@ -7,6 +7,7 @@ None.
 ## Role Variables
 |Key|Type|Description|Default|
 |:--|:---|:----------|:------|
+|nginx_loglotate_create|String||0640 nginx nginx|
 
 ## Dependencies
 None.

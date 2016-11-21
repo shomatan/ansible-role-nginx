@@ -22,3 +22,6 @@ nginx_client_max_body_size: "64k"
 nginx_client_body_temp_path: "/var/cache/nginx/client_temp"
 nginx_server_tokens: "off"
 nginx_port_in_redirect: "off"
+
+# loglotate
+nginx_loglotate_create: "0640 nginx nginx"
