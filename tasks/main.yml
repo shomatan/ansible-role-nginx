@@ -14,6 +14,21 @@
 - include: setup-Ubuntu.yml
   when: ansible_distribution == 'Ubuntu'
 
+# configure
+- name: Copy nginx configuration in place.
+  template: src=nginx.conf.j2 dest={{ nginx_conf_file_path }}
+  notify: restart nginx
+
+- name: Delete default conf file.
+  file: path={{ nginx_conf_path }}/default.conf state=absent
+  notify: restart nginx
+
+- name: Copy log lotate configuration in place.
+  template: src=loglotate.j2 dest=/etc/logrotate.d/nginx
+
+- name: Create client body temp directory.
+  file: path={{ nginx_client_body_temp_path }} state=directory owner={{ nginx_user }} group={{ nginx_user }} mode=00755
+
 # service
 - name: Ensure nginx is started and enabled to start at boot.
   service: name=nginx state=started enabled=yes

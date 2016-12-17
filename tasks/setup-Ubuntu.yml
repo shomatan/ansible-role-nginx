@@ -1,11 +1,9 @@
 ---
-- name: Ensure APT official nginx key
+- name: Ubuntu | Ensure APT official nginx key.
   apt_key: url=http://nginx.org/keys/nginx_signing.key
-  when: ansible_os_family == 'Debian'
 
-- name: Ensure APT official nginx repository
+- name: Ubuntu | Ensure APT official nginx repository.
   apt_repository: repo="deb http://nginx.org/packages/{{ ansible_distribution|lower }}/ {{ ansible_distribution_release }} nginx"
-  when: ansible_os_family == 'Debian'
 
-- name: Ensure nginx is installed.
+- name: Ubuntu | Ensure nginx is installed.
   apt: name=nginx state=present

@@ -1,5 +1,5 @@
 ---
-- name: Add nginx repository.
+- name: RedHat | Add nginx repository.
   yum_repository:
     name: nginx
     description: nginx repo
@@ -7,29 +7,10 @@
     gpgcheck: no
     enabled: no
 
-- name: Ensure nginx is installed.
+- name: RedHat | Ensure nginx is installed.
   yum: name=nginx state={{ nginx_version }} enablerepo=nginx
 
 # Nginx setup.
-- name: Copy nginx service in place.
+- name: RedHat | Copy nginx service in place.
   copy: src=nginx.service dest=/usr/lib/systemd/system/nginx.service
   notify: daemon-reload
-
-- name: Copy nginx configuration in place.
-  template: src=nginx.conf.j2 dest=/etc/nginx/nginx.conf
-  notify: reload nginx
-
-- name: Delete default conf file.
-  file: path=/etc/nginx/conf.d/default.conf state=absent
-  notify: reload nginx
-
-- name: Create client body temp directory.
-  file:
-    path: "{{ nginx_client_body_temp_path }}"
-    state: directory
-    owner: "{{ nginx_user }}"
-    group: "{{ nginx_user }}"
-    mode: 00755
-
-- name: Copy log lotate configuration in place.
-  template: src=loglotate.j2 dest=/etc/logrotate.d/nginx
