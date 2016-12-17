@@ -1,0 +1,16 @@
+---
+- name: RedHat | Add nginx repository.
+  yum_repository:
+    name: nginx
+    description: nginx repo
+    baseurl: http://nginx.org/packages/mainline/centos/{{ ansible_distribution_major_version }}/$basearch/
+    gpgcheck: no
+    enabled: no
+
+- name: RedHat | Ensure nginx is installed.
+  yum: name=nginx state={{ nginx_version }} enablerepo=nginx
+
+# Nginx setup.
+- name: RedHat | Copy nginx service in place.
+  copy: src=nginx.service dest=/usr/lib/systemd/system/nginx.service
+  notify: daemon-reload

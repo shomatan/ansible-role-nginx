@@ -38,5 +38,5 @@ http {
     server_names_hash_bucket_size {{ nginx_server_names_hash_bucket_size }};
     #gzip  on;
 
-    include /etc/nginx/conf.d/*.conf;
+    include {{ nginx_conf_path }}/*.conf;
 }

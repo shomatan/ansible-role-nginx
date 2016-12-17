@@ -1,0 +1,8 @@
+---
+- hosts: all
+  become: true
+  roles:
+    - nginx
+  tasks:
+    - copy: src=welcome.conf dest=/etc/nginx/conf.d/welcome.conf
+      notify: restart nginx

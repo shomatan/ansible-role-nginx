@@ -1,0 +1,2 @@
+centos ansible_ssh_host=192.168.33.20
+ubuntu ansible_ssh_host=192.168.33.21
