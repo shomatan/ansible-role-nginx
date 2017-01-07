@@ -1,9 +1,9 @@
 ---
-- name: Ubuntu | Ensure APT official nginx key.
+- name: Ensure APT official nginx key.
   apt_key: url=http://nginx.org/keys/nginx_signing.key
 
-- name: Ubuntu | Ensure APT official nginx repository.
+- name: Ensure APT official nginx repository.
   apt_repository: repo="deb http://nginx.org/packages/{{ ansible_distribution|lower }}/ {{ ansible_distribution_release }} nginx"
 
-- name: Ubuntu | Ensure nginx is installed.
+- name: Ensure nginx is installed.
   apt: name=nginx state=present
