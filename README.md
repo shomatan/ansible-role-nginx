@@ -1,6 +1,8 @@
 Ansible role: nginx
 =========
 
+[![Build Status](https://travis-ci.org/shomatan/ansible-nginx.svg?branch=master)](https://travis-ci.org/shomatan/ansible-nginx)
+
 Installs and configures [Nginx](http://nginx.org/) Open Source HTTP and reverse proxy server.
 
 Requirements
