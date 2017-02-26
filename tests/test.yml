@@ -3,4 +3,4 @@
   remote_user: root
   connection: docker
   roles:
-    - ansible-nginx
+    - role_under_test
