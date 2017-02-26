@@ -1,23 +1,26 @@
-# Ansible role: nginx
+Ansible role: nginx
+=========
+
 Installs and configures [Nginx](http://nginx.org/) Open Source HTTP and reverse proxy server.
 
-## Requirements
+Requirements
+------------
+
 None.
 
-## Role Variables
-|Key|Type|Description|Default|
-|:--|:---|:----------|:------|
-|nginx_loglotate_create|String||0640 nginx nginx|
+Role Variables
+--------------
 
-## Dependencies
+Available variables are listed below, along with default values (see defaults/main.yml):
+
+Dependencies
+------------
+
 None.
 
-## Example playbook
+Example Playbook
+----------------
 
-```yaml
-- hosts: all
-  roles:
-    - { role: nginx }
-  vars:
-
-```
+    - hosts: servers
+      roles:
+         - { role: shomatan.nginx }
