@@ -44,3 +44,4 @@
 # service
 - name: Ensure nginx is started and enabled to start at boot.
   service: name=nginx state=started enabled=yes
+  when: ansible_connection != 'docker'
