@@ -16,9 +16,14 @@
     enabled: no
 
 - name: Ensure nginx is installed.
-  yum: name=nginx state={{ nginx_version }} enablerepo=nginx
+  yum:
+    name: nginx
+    enablerepo: nginx
+    state: "{{ nginx_version }}"
 
 # Nginx setup.
 - name: Copy nginx service in place.
-  copy: src=nginx.service dest=/usr/lib/systemd/system/nginx.service
+  copy:
+    src: nginx.service
+    dest: /usr/lib/systemd/system/nginx.service
   notify: daemon-reload
