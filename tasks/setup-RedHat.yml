@@ -27,3 +27,8 @@
     src: nginx.service
     dest: /usr/lib/systemd/system/nginx.service
   notify: daemon-reload
+
+# clean
+- name: Purge yum cache.
+  command: yum clean all
+  when: ansible_connection == 'docker'
