@@ -36,7 +36,9 @@ http {
     port_in_redirect      {{ nginx_port_in_redirect }};
 
     server_names_hash_bucket_size {{ nginx_server_names_hash_bucket_size }};
-    #gzip  on;
-
+    gzip {{ nginx_gzip }};
+  {% if nginx_gzip == "on" and nginx_gzip_types != "" %}
+    gzip_types {{ nginx_gzip_types }}
+  {% endif %}
     include {{ nginx_conf_path }}/*.conf;
 }
