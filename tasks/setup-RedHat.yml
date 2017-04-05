@@ -15,11 +15,25 @@
     gpgcheck: no
     enabled: no
 
-- name: Ensure nginx is installed.
+# install
+- name: Ensure latest nginx is installed.
   yum:
     name: nginx
     enablerepo: nginx
-    state: "{{ nginx_version }}"
+    state: latest
+  when: nginx_version == "latest"
+
+- block:
+    - name: Define nginx_yum_name.
+      set_fact:
+        nginx_yum_name: nginx-{{ nginx_version }}
+
+    - name: Ensure specify nginx is installed.
+      yum:
+        name: "{{ nginx_yum_name }}"
+        enablerepo: nginx
+        state: installed
+  when: nginx_version != "latest"
 
 # Nginx setup.
 - name: Copy nginx service in place.
