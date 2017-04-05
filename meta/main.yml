@@ -4,7 +4,7 @@ galaxy_info:
   author: shomatan
   description: Nginx installation for Linux.
   company:
-  license: "license (BSD, MIT)"
+  license: "license MIT"
   min_ansible_version: 1.8
   platforms:
     - name: Ubuntu
