@@ -10,11 +10,9 @@
 # setup/install tasks.
 - include: setup-RedHat.yml
   when: ansible_os_family == 'RedHat'
-  static: no
 
 - include: setup-Ubuntu.yml
   when: ansible_distribution == 'Ubuntu'
-  static: no
 
 # configure
 - name: Copy nginx configuration in place.
